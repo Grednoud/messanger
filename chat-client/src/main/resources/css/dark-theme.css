@@ -1,0 +1,322 @@
+/*
+ * Modern dark theme for Chat Client
+ * Современная тёмная тема для клиента чата
+ */
+
+/* ==== Root variables ==== */
+.root {
+    -fx-base: #1e1e2e;
+    -fx-background: #181825;
+    -fx-control-inner-background: #1e1e2e;
+    -fx-control-inner-background-alt: #181825;
+    -fx-accent: #89b4fa;
+    -fx-focus-color: #89b4fa;
+    -fx-faint-focus-color: transparent;
+    -fx-text-fill: #cdd6f4;
+    -fx-prompt-text-fill: #6c7086;
+    -fx-font-family: "Segoe UI", "SF Pro Display", "Noto Sans", sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* ==== Main view ==== */
+.main-view {
+    -fx-background-color: #181825;
+}
+
+/* ==== Section headers ==== */
+.section-header {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #a6adc8;
+    -fx-padding: 0 0 4px 0;
+}
+
+/* ==== User panel ==== */
+.user-panel {
+    -fx-background-color: #1e1e2e;
+    -fx-border-color: #313244;
+    -fx-border-width: 0 1px 0 0;
+}
+
+.user-list {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.user-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+    -fx-text-fill: #cdd6f4;
+    -fx-font-size: 13px;
+}
+
+.user-list .list-cell:filled:hover {
+    -fx-background-color: #313244;
+}
+
+.user-list .list-cell:filled:selected {
+    -fx-background-color: #45475a;
+    -fx-text-fill: #89b4fa;
+}
+
+/* ==== Chat panel ==== */
+.chat-panel {
+    -fx-background-color: #181825;
+}
+
+/* ==== Message list ==== */
+.message-list {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.message-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 8px 12px;
+}
+
+.message-list .list-cell:filled:hover {
+    -fx-background-color: #1e1e2e;
+}
+
+.message-list .list-cell:filled:selected {
+    -fx-background-color: #1e1e2e;
+}
+
+/* ==== Message styling ==== */
+.chat-message {
+    -fx-padding: 8px 12px;
+}
+
+.message-sender {
+    -fx-font-weight: bold;
+    -fx-text-fill: #89b4fa;
+    -fx-font-size: 13px;
+}
+
+.message-time {
+    -fx-text-fill: #6c7086;
+    -fx-font-size: 11px;
+}
+
+.message-text {
+    -fx-text-fill: #cdd6f4;
+    -fx-font-size: 14px;
+}
+
+/* ==== System messages ==== */
+.system-message {
+    -fx-padding: 4px 12px;
+}
+
+.system-text {
+    -fx-text-fill: #6c7086;
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+}
+
+/* ==== Input area ==== */
+.message-input {
+    -fx-background-color: #1e1e2e;
+    -fx-text-fill: #cdd6f4;
+    -fx-border-color: #313244;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 10px 14px;
+    -fx-font-size: 14px;
+}
+
+.message-input:focused {
+    -fx-border-color: #89b4fa;
+}
+
+/* ==== Send button ==== */
+.send-button {
+    -fx-background-color: #89b4fa;
+    -fx-text-fill: #1e1e2e;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.send-button:hover {
+    -fx-background-color: #b4befe;
+}
+
+.send-button:pressed {
+    -fx-background-color: #74c7ec;
+}
+
+.send-button:disabled {
+    -fx-background-color: #45475a;
+    -fx-text-fill: #6c7086;
+}
+
+/* ==== Status bar ==== */
+.status-bar {
+    -fx-background-color: #1e1e2e;
+    -fx-border-color: #313244;
+    -fx-border-width: 1px 0 0 0;
+}
+
+.status-label {
+    -fx-text-fill: #6c7086;
+    -fx-font-size: 12px;
+}
+
+.status-label.connected {
+    -fx-text-fill: #a6e3a1;
+}
+
+/* ==== Login dialog ==== */
+.login-dialog {
+    -fx-background-color: #1e1e2e;
+}
+
+.login-dialog .dialog-pane {
+    -fx-background-color: #1e1e2e;
+}
+
+.login-dialog .dialog-pane > .content {
+    -fx-background-color: #1e1e2e;
+}
+
+.login-dialog .header-panel {
+    -fx-background-color: #181825;
+}
+
+.login-dialog .header-panel .label {
+    -fx-text-fill: #cdd6f4;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.login-dialog .label {
+    -fx-text-fill: #a6adc8;
+}
+
+/* ==== Text fields in dialog ==== */
+.text-field, .password-field {
+    -fx-background-color: #181825;
+    -fx-text-fill: #cdd6f4;
+    -fx-border-color: #313244;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 8px 12px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #89b4fa;
+}
+
+/* ==== Spinner ==== */
+.spinner {
+    -fx-background-color: #181825;
+}
+
+.spinner .text-field {
+    -fx-background-color: #181825;
+    -fx-text-fill: #cdd6f4;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: #313244;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #45475a;
+}
+
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow {
+    -fx-background-color: #cdd6f4;
+}
+
+/* ==== Buttons in dialog ==== */
+.button {
+    -fx-background-color: #313244;
+    -fx-text-fill: #cdd6f4;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #45475a;
+}
+
+.button:pressed {
+    -fx-background-color: #585b70;
+}
+
+.button:default {
+    -fx-background-color: #89b4fa;
+    -fx-text-fill: #1e1e2e;
+    -fx-font-weight: bold;
+}
+
+.button:default:hover {
+    -fx-background-color: #b4befe;
+}
+
+.button:disabled {
+    -fx-background-color: #313244;
+    -fx-text-fill: #6c7086;
+}
+
+/* ==== Scrollbars ==== */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #45475a;
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #585b70;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+/* ==== Alert dialog ==== */
+.alert {
+    -fx-background-color: #1e1e2e;
+}
+
+.alert .dialog-pane {
+    -fx-background-color: #1e1e2e;
+}
+
+.alert .dialog-pane > .content {
+    -fx-background-color: #1e1e2e;
+}
+
+.alert .dialog-pane .header-panel {
+    -fx-background-color: #181825;
+}
+
+.alert .dialog-pane .label {
+    -fx-text-fill: #cdd6f4;
+}

@@ -1,7 +1,25 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
 .idea/
 *.iml
+*.ipr
 *.iws
+.settings/
+.classpath
+.project
+*.swp
+*~
 
-*/log/
-*/out/
-*/target/
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Chat history files
+*-message-history.txt
