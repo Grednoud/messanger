@@ -26,6 +26,7 @@ public final class ChatServer {
     private final ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
 
     private volatile boolean running;
+    private ServerSocket serverSocket;
 
     public ChatServer(int port, AuthService authService) {
         this.port = port;
@@ -37,18 +38,36 @@ public final class ChatServer {
      */
     public void start() throws IOException {
         running = true;
+        serverSocket = new ServerSocket(port);
+        LOG.log(Level.INFO, "Сервер запущен на порту {0}", getBoundPort());
 
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
-            LOG.log(Level.INFO, "Сервер запущен на порту {0}", port);
-
+        try {
             while (running) {
-                Socket clientSocket = serverSocket.accept();
+                Socket clientSocket;
+                try {
+                    clientSocket = serverSocket.accept();
+                } catch (IOException e) {
+                    if (!running) {
+                        break;
+                    }
+                    throw e;
+                }
                 LOG.log(Level.INFO, "Новое подключение: {0}", clientSocket.getRemoteSocketAddress());
-
-                var handler = new ClientHandler(this, clientSocket, authService);
-                executor.submit(handler);
+                executor.submit(new ClientHandler(this, clientSocket, authService));
             }
+        } finally {
+            closeServerSocket();
         }
+    }
+
+    /**
+     * Порт, на котором сервер слушает соединения, или 0 если ещё не запущен.
+     */
+    public int getBoundPort() {
+        ServerSocket socket = serverSocket;
+        return socket != null && socket.isBound() && !socket.isClosed()
+                ? socket.getLocalPort()
+                : 0;
     }
 
     /**
@@ -56,7 +75,19 @@ public final class ChatServer {
      */
     public void stop() {
         running = false;
+        closeServerSocket();
         executor.shutdown();
+    }
+
+    private void closeServerSocket() {
+        ServerSocket socket = serverSocket;
+        if (socket != null && !socket.isClosed()) {
+            try {
+                socket.close();
+            } catch (IOException ignored) {
+                // already stopping
+            }
+        }
     }
 
     /**

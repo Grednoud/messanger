@@ -53,23 +53,30 @@ public final class NetworkClient implements Closeable {
 
         send(new Message.Auth(login, password));
 
-        String response = in.readLine();
-        Message message = Protocol.deserialize(response);
+        var pending = new java.util.ArrayList<Message>();
+        String response;
+        while ((response = in.readLine()) != null) {
+            Message message = Protocol.deserialize(response);
 
-        if (message instanceof Message.AuthResult result) {
-            if (result.success()) {
-                this.login = login;
-                this.connected = true;
-                startReceiverThread();
-                return new AuthResult(true, null);
-            } else {
+            if (message instanceof Message.AuthResult result) {
+                if (result.success()) {
+                    this.login = login;
+                    this.connected = true;
+                    startReceiverThread();
+                    pending.forEach(messageHandler);
+                    return new AuthResult(true, null);
+                }
                 socket.close();
                 return new AuthResult(false, result.message());
+            }
+
+            if (message != null) {
+                pending.add(message);
             }
         }
 
         socket.close();
-        return new AuthResult(false, "Неожиданный ответ сервера");
+        return new AuthResult(false, "Сервер закрыл соединение");
     }
 
     /**

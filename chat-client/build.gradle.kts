@@ -6,6 +6,7 @@ plugins {
 
 dependencies {
     implementation(project(":message-protocol"))
+    testImplementation(project(":chat-server"))
 }
 
 javafx {

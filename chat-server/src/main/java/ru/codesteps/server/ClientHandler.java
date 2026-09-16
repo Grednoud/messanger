@@ -67,8 +67,8 @@ final class ClientHandler implements Runnable {
                     }
 
                     this.login = auth.login();
-                    server.registerClient(login, this);
                     send(Protocol.serialize(Message.AuthResult.ok()));
+                    server.registerClient(login, this);
                     return true;
                 } else {
                     send(Protocol.serialize(Message.AuthResult.fail("Неверный логин или пароль")));

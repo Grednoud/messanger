@@ -29,7 +29,7 @@ public final class LoginDialog extends Dialog<LoginDialog.Credentials> {
     public LoginDialog(Stage owner) {
         bindOwnerIfReady(owner);
         setTitle("Подключение к чату");
-        setHeaderText("Введите данные для подключения");
+        setHeaderText("Тестовые пользователи: Alex / 123, Bob / 234, Clod / 345");
 
         var connectButtonType = new ButtonType("Подключиться", ButtonBar.ButtonData.OK_DONE);
         getDialogPane().getButtonTypes().addAll(connectButtonType, ButtonType.CANCEL);
