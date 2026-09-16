@@ -27,7 +27,7 @@ public final class LoginDialog extends Dialog<LoginDialog.Credentials> {
     private final PasswordField passwordField;
 
     public LoginDialog(Stage owner) {
-        initOwner(owner);
+        bindOwnerIfReady(owner);
         setTitle("Подключение к чату");
         setHeaderText("Введите данные для подключения");
 
@@ -93,6 +93,20 @@ public final class LoginDialog extends Dialog<LoginDialog.Credentials> {
         });
 
         loginField.requestFocus();
+    }
+
+    /**
+     * JavaFX 21 {@code Dialog.initOwner()} throws NPE when the owner Stage
+     * has no Scene yet (HeavyweightDialog.updateStageBindings).
+     */
+    public static boolean canBindOwner(Stage owner) {
+        return owner != null && owner.getScene() != null;
+    }
+
+    private void bindOwnerIfReady(Stage owner) {
+        if (canBindOwner(owner)) {
+            initOwner(owner);
+        }
     }
 
     /**

@@ -50,10 +50,11 @@ public final class MainView extends BorderPane {
     }
 
     /**
-     * Инициализирует диалог подключения. Вызывать после установки Scene на Stage.
+     * Инициализирует диалог подключения. Вызывать после установки Scene на Stage
+     * и показа окна — иначе JavaFX Dialog.initOwner() падает с NPE.
      */
     public void initialize() {
-        showLoginDialog();
+        Platform.runLater(this::showLoginDialog);
     }
 
     private void buildUI() {

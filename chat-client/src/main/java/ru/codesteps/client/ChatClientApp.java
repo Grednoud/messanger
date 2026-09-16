@@ -19,9 +19,10 @@ public final class ChatClientApp extends Application {
         var mainView = new MainView(primaryStage);
         var scene = new Scene(mainView, 900, 600);
 
-        scene.getStylesheets().add(
-                getClass().getResource("/css/dark-theme.css").toExternalForm()
-        );
+        var css = getClass().getResource("/css/dark-theme.css");
+        if (css != null) {
+            scene.getStylesheets().add(css.toExternalForm());
+        }
 
         primaryStage.setTitle("Сетевой чат / Network Chat");
         primaryStage.setMinWidth(600);
