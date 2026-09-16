@@ -47,6 +47,12 @@ public final class MainView extends BorderPane {
         this.stage = stage;
         getStyleClass().add("main-view");
         buildUI();
+    }
+
+    /**
+     * Инициализирует диалог подключения. Вызывать после установки Scene на Stage.
+     */
+    public void initialize() {
         showLoginDialog();
     }
 

@@ -29,5 +29,7 @@ public final class ChatClientApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.setOnCloseRequest(e -> mainView.shutdown());
         primaryStage.show();
+
+        mainView.initialize();
     }
 }
